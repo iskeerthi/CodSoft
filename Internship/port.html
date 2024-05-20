@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keerthi Sripada</title>
+    <link rel="stylesheet" href="Port/port.css">
+    <link rel="icon" href="Port/icon1.jpg">
+    <script src="https://kit.fontawesome.com/997843a07a.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="port/Keerthi2.png" class="logo">
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p>UI/UX Designer</p>
+                <h1>Hi, I'm <span>Keerthi</span></h1>
+            </div>
+        </div>
+    </div>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="Port/me2.jpg.png">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I am an enthusiastic student who is interested
+                        in building a career in Computer Science and 
+                        Engineering, I aim to seek an opportunity where
+                        I can achieve my goals and contribute my skills 
+                        towards the growth and productivity of the esteemed
+                        organization. I possess great logical reasoning skills
+                        and enjoy approaching any problem with a positive attitude.</p>
+
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links"onclick="opentab('certifications')">Certifications</p>
+                            <p class="tab-links"onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>Web Development</span><br>HTML, CSS,JS</li>
+                                <li><span>Data Science</span><br>Python, SQL, R, MATLAB</li>
+                                <li><span>Programming Languages</span><br>C, C++, Java</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="certifications">
+                            <ul>
+                                <li><span>AICTE Virtual Internship</span><br>AI-ML: Object detection with TensorFlow Lite<br>Custom Model for image classifier<br>Call vision API product search backend for Android</li>
+                                <li><span>Python(SimpliLearn)</span><br>Variables and types<br>Operators<br>Abstraction and Functions<br>OOPs</li>
+                                <li><span>DSA(Coding Ninjas)</span><br>Arrays and Linked Lists<br>Trees<br>Bit Manipulation</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>Matrusri Engineering College(2021-2025)</span><br>Bachelor of Engineering(CSE)<br>CGPA:8.48</li>
+                                <li><span>Narayana Junior College(2019-2021)</span><br>Intermediate(11th and 12th)(MPC)<br>GPA:9.74</li>
+                                <li><span>St Ann's High School</span><br>upto 10th grade<br>GPA:9.8</li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+            <a href="#" class="btn"></a>
+        </div>
+    </div>
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fa-regular fa-paper-plane"></i>sindirakeerthi20@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>+91 9491917217</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100086033744367"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/i.keerth.i/"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/indira-keerthi-sripada/"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <a href="Port/sripadaindirakeerthiresume.pdf" download class="btn btn2">Download Resume</a>
+                </div>
+                <div class="contact-right">
+                    <form name = "submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright @Keerthi.</p>
+        </div>
+    </div>
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>
+    
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxqL00EX0D12sVNOFMEOc-TGFNzOygwt10LwtDeozuAtljIEGbJne4MnVrIAE-LrK5-/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully";
+                setTimeout(function() {
+                    msg.innerHTML = "";
+                    }, 3000);
+                    form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>  
+</html>
